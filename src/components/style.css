@@ -1,0 +1,46 @@
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  background-color: #323131;
+  color: #eee;
+}
+
+input {
+  width: 350px;
+  padding: 5px;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 12px;
+}
+
+.movie-card {
+  width: 300px;
+  border: 1px solid #eee;
+  padding: 0 0 15px 0;
+}
+
+.movie-card > img {
+  width: 300px;
+  height: 420px;
+}
+
+.movie-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  height: 120px;
+  cursor: pointer;
+}
+
+.movie-info p {
+  text-align: center;
+}
+
+.movie-buttons {
+  display: flex;
+  justify-content: space-around;
+}
