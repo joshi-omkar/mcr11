@@ -152,8 +152,6 @@ const Home = () => {
               data={movie}
               key={key}
               dispatch={dispatch}
-              setClickedOnStart={setClickedOnStart}
-              setClickedOnWatchlater={setClickedOnWatchlater}
             />
           );
         })}

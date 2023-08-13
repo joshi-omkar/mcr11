@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Navbar from './components/Navbar'
 import AddNewMovie from './pages/AddNewMovie'
 import { SingleMovie } from './pages/SingleMovie'
+import StarredMovies from './pages/StarredMovies'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Route path='/' exact element={<Home/>} />
         <Route path='/addMovie' exact element={<AddNewMovie/>} />
         <Route path='/movie/:id' exact element={<SingleMovie/>} />
+        <Route path='/starredMovies' exact element={<StarredMovies/>} />
       </Routes>
     </div>
   )

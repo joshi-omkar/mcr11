@@ -5,28 +5,22 @@ import { useNavigate } from "react-router-dom";
 const MovieCard = ({
   data,
   dispatch,
-  setClickedOnStar,
-  setClickedOnWatchlater,
 }) => {
   const navigate = useNavigate();
   const starMovie = () => {
     dispatch({ type: "STAR_MOVIE", id: data.id });
-    setClickedOnStar(false);
   };
 
   const UnStarMovie = () => {
     dispatch({ type: "UNSTAR_MOVIE", id: data.id });
-    setClickedOnStar(false);
   };
 
   const addToWatchlist = () => {
     dispatch({ type: "ADD_TO_WATCHLIST", id: data.id });
-    setClickedOnWatchlater(true);
   };
 
   const RemoveToWatchlist = () => {
     dispatch({ type: "REMOVE_FROM_WATCHLIST", id: data.id });
-    setClickedOnWatchlater(true);
   };
 
   const hanleOnClickMovie = () => {
