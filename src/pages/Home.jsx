@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import { useData } from "../contexts/DataContext";
 import MovieCard from "../components/MovieCard";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const { data, dispatch, state } = useData();
+  const { data, setData, dispatch, state } = useData();
   const navigate = useNavigate();
 
   console.log(state);
@@ -101,6 +101,10 @@ const Home = () => {
       year: selectedReleaseYear,
     });
   };
+
+  // useEffect(()=>{
+  //   setData(data)
+  // }, [clickedOnWatchlater, clickedOnStar])
 
   const handleAddNewMovie = (e) => {
     navigate("/addMovie");

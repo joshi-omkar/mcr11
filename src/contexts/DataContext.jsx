@@ -11,9 +11,7 @@ import { movieReducer } from "../reducers/MovieReducer";
 export const DataContextProvider = createContext();
 
 const DataContext = ({ children }) => {
-//   useEffect(() => {
-//     localStorage.setItem("movies", JSON.stringify(movies));
-//   }, []);
+  
 
   const initialState = {
     movies: movies,
@@ -23,6 +21,10 @@ const DataContext = ({ children }) => {
     filteredMovies: JSON.parse(localStorage.getItem('movies')),
   };
   const [data, setData] = useState(movies);
+
+  useEffect(() => {
+    setData(movies)
+  }, [movies]);
 
   const [state, dispatch] = useReducer(movieReducer, initialState);
 

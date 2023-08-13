@@ -10,6 +10,16 @@ export const movieReducer = (state, action) => {
         movies: updatedMoviesStarred,
       };
 
+    case "UNSTAR_MOVIE":
+      const updatedMoviesUnStarred = state.movies.map((movie) =>
+        movie.id === action.id ? { ...movie, starred: false } : movie
+      );
+      localStorage.setItem("movies", JSON.stringify(updatedMoviesUnStarred));
+      return {
+        ...state,
+        movies: updatedMoviesUnStarred,
+      };
+
     case "ADD_TO_WATCHLIST":
       const updatedMoviesWatchlist = state.movies.map((movie) =>
         movie.id === action.id ? { ...movie, addedToWatchlist: true } : movie
@@ -18,6 +28,19 @@ export const movieReducer = (state, action) => {
       return {
         ...state,
         movies: updatedMoviesWatchlist,
+      };
+
+    case "REMOVE_FROM_WATCHLIST":
+      const updatedMoviesRemoveWatchlist = state.movies.map((movie) =>
+        movie.id === action.id ? { ...movie, addedToWatchlist: false } : movie
+      );
+      localStorage.setItem(
+        "movies",
+        JSON.stringify(updatedMoviesRemoveWatchlist)
+      );
+      return {
+        ...state,
+        movies: updatedMoviesRemoveWatchlist,
       };
 
     case "FILTER":
@@ -55,8 +78,24 @@ export const movieReducer = (state, action) => {
       return {
         ...state,
         movies: updatedMovies,
-        filteredMovies: updatedMovies
+        filteredMovies: updatedMovies,
       };
+
+    case "SEARCH":
+      const filteredMovies = state.movies.filter((movie) => {
+        const lowerSearchQuery = action.searchQuery.toLowerCase();
+        return (
+          movie.title.toLowerCase().includes(lowerSearchQuery) ||
+          movie.cast.some((actor) =>
+            actor.toLowerCase().includes(lowerSearchQuery)
+          ) ||
+          movie.director.toLowerCase().includes(lowerSearchQuery)
+        );
+      });
+      return {
+        ...state, 
+        filteredMovies: filteredMovies,
+      }
 
     default:
       return state;
